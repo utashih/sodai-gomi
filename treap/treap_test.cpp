@@ -7,7 +7,7 @@
 
 #include <random>
 
-using hashtag::Treap;
+using treap::Treap;
 
 GTEST_TEST(TreapTest, BasicTest) {
   Treap treap;
@@ -33,7 +33,7 @@ GTEST_TEST(TreapTest, BasicTest) {
   }
 
   cnt = 0;
-  auto in = [&](hashtag::treap_node *p) {
+  auto in = [&](treap::treap_node *p) {
     cnt++;
     if (p->left) {
       ASSERT_GE(p->priority, p->left->priority);
@@ -42,7 +42,7 @@ GTEST_TEST(TreapTest, BasicTest) {
       ASSERT_GE(p->priority, p->right->priority);
     }
   };
-  auto pass = [](hashtag::treap_node *p) {};
+  auto pass = [](treap::treap_node *p) {};
   treap.Traverse(pass, in, pass);
 
   ASSERT_EQ(cnt, N);

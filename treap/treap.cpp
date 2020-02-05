@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-using namespace hashtag;
+using namespace treap;
 
 bool Treap::insert(treap_node *&p, uint64_t key, uint64_t priority) {
   if (p == nullptr) {

@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <cstdlib>
 
-namespace hashtag {
+namespace treap {
 
 struct treap_node {
   uint64_t key;
@@ -21,13 +21,11 @@ class Treap {
 
   template <typename Pre, typename In, typename Post>
   void Traverse(Pre &pre, In &in, Post &post) {
-    traverse(root, pre, in, post); 
+    traverse(root, pre, in, post);
   }
 
   inline void TraverseKey(uint64_t *const buf, uint64_t &cnt) {
-    auto in = [&](treap_node *p) {
-      buf[cnt++] = p->key;
-    };
+    auto in = [&](treap_node *p) { buf[cnt++] = p->key; };
     auto pass = [](treap_node *p) {};
     traverse(root, pass, in, pass);
   }
@@ -53,11 +51,11 @@ class Treap {
 
   template <typename Pre, typename In, typename Post>
   void traverse(treap_node *p, Pre &pre, In &in, Post &post) {
-    if (!p) return; 
-    pre(p); 
-    traverse(p->left, pre, in, post); 
+    if (!p) return;
+    pre(p);
+    traverse(p->left, pre, in, post);
     in(p);
-    traverse(p->right, pre, in, post); 
+    traverse(p->right, pre, in, post);
     post(p);
   }
 
@@ -66,6 +64,6 @@ class Treap {
   treap_node *root;
 };
 
-}  // namespace hashtag
+}  // namespace treap
 
 #endif
